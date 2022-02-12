@@ -18,8 +18,71 @@ namespace MorseRSAAlgorithms
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
 
- 
-            // Steps to RSA encryption
+            // Days contributed to this:
+            // 7.2.22, 8.2.22, 9.2.22, 10.2.22, 11.2.22
+            // Total commits:
+            // 20
+
+            // https://github.com/OierGman/RSAencyption
+            
+            
+            // RSA - Repeated squaring algorithm
+            // Python solution to be converted to C#
+
+
+            /*
+            def gcd(x, y):
+                while y != 0:
+                    remainder = x % y
+                    x = y
+                    y = remainder
+                return x
+
+
+            def crypto(key, char):
+                x, y = key
+                expo = pow(ord(char), x)
+                return int(expo % y)
+
+
+            def string_to_list(string):
+                new_list = []
+                for i in string:
+                    if i.isdigit():
+                        new_list.append(i)
+                return new_list
+
+
+            def no_leading_zero(binary_list):
+                while binary_list[0] == '0':
+                    binary_list.remove(binary_list[0])
+                return binary_list
+
+
+            def remove_index_zero(a_list):
+                a_list.remove(a_list[0])
+                return a_list
+
+
+            def exponent_algorithm(private_key, encrypted_char):
+                exponential, n = private_key
+                binary_list = remove_index_zero(no_leading_zero(string_to_list(bin(exponential))))
+                x = encrypted_char
+                for z in binary_list:
+                    if z == '1':
+                        i = x ** 2
+                        x = (i * encrypted_char) % n
+                    else:
+                        x = pow(x, 2) % n
+                return chr(x)
+             */
+
+
+
+
+            // Steps to RSA encryption in C#
+
+
             /*
             // Assigning private and public keys for RSA encryption/decryption
             int p = 13;
@@ -61,7 +124,6 @@ namespace MorseRSAAlgorithms
             Tuple<int, int> publicKey = new Tuple<int, int>(e, n);
             Tuple<int, int> privateKey = new Tuple<int, int>(d, n);
              */
-             
         }
     }
 }
