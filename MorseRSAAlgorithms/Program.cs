@@ -18,7 +18,7 @@ namespace MorseRSAAlgorithms
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
 
-            // Days contributed to this:
+            // Days contributed to python RSA:
             // 7.2.22, 8.2.22, 9.2.22, 10.2.22, 11.2.22
             // Total commits:
             // 20
