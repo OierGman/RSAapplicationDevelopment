@@ -18,8 +18,13 @@ namespace MorseRSAAlgorithms
                 a = b;
                 b = Remainder;
             }
-
             return a;
+        }
+        
+        public static int crypto(Tuple<int, int> key, int character)
+        {
+            int expo = (int)Math.Pow(character, key.Item1);
+            return expo % key.Item2;
         }
 
         public static List<Tuple<int, int>> get_public_private_key(int p, int q)
