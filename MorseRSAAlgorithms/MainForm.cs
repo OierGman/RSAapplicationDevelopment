@@ -12,6 +12,18 @@ namespace MorseRSAAlgorithms
 {
     public partial class MainForm : Form
     {
+        int p;
+        int q;
+        Tuple<int, int> pub_keys;
+        Tuple<int, int> pri_keys;
+        string encrypted_message;
+        string decrypted_message;
+
+        static char ch(int v)
+        {
+            return Convert.ToChar(v);
+        }
+        
         public MainForm()
         {
             InitializeComponent();
