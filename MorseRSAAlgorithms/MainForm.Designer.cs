@@ -38,7 +38,6 @@ namespace MorseRSAAlgorithms
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Name = "MainForm";
             this.Text = "Morse and RSA Algorithm TestBench";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
