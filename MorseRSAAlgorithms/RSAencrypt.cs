@@ -18,8 +18,49 @@ namespace MorseRSAAlgorithms
                 a = b;
                 b = Remainder;
             }
-
             return a;
+        }
+
+        static List<char> string_to_list(string s)
+        {
+            List<char> new_list = new List<char>();
+            foreach (var i in s)
+            {
+                new_list.Add(i);
+            }
+            return new_list;
+        }
+
+        static List<char> remove_index_zero(List<char> a_list)
+        {
+            a_list.Remove(a_list[0]);
+            return a_list;
+        }
+
+        static string bin(int value)
+        {
+            return Convert.ToString(value, 2);
+        }
+
+        public static char exponent_algorithm(Tuple<int, int> key, double encrypted_char)
+        {
+            var binary_list = remove_index_zero(string_to_list(bin(key.Item1)));
+            double x = encrypted_char;
+
+            foreach (var z in binary_list)
+            {
+                if (z == '1')
+                {
+                    double i = Math.Pow(x, 2);
+                    x = (i * encrypted_char) % key.Item2;
+                }
+                else
+                {
+                    x = Math.Pow(x, 2) % key.Item2;
+                }
+            }
+            int unicode = Convert.ToInt32(x);
+            return Convert.ToChar(unicode);
         }
 
         public static List<Tuple<int, int>> get_public_private_key(int p, int q)
