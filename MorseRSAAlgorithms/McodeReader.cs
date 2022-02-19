@@ -35,5 +35,31 @@ namespace MorseRSAAlgorithms
             }
             return newText;
         }
+
+        public static string morseToText(string text)
+        {
+            char[] letters = { ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+                'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+            string[] morseLetters = { "/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...",
+                "-", "..-", "...-", ".--", "-..-", "-.--", "--..", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "-----" };
+
+            string textToChange = text;
+            string newText = "";
+
+            string[] morseArray = textToChange.Split(' ');
+
+            for (int i = 0; i < morseArray.Length; i++)
+            {
+                for (short j = 0; j < 37; j++)
+                {
+                    if (morseArray[i] == morseLetters[j])
+                    {
+                        newText += letters[j];
+                        break;
+                    }
+                }
+            }
+            return newText;
+        }
     }
 }
