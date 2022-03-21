@@ -41,12 +41,13 @@ namespace MorseRSAAlgorithms
             this.textBoxQ = new System.Windows.Forms.TextBox();
             this.textBoxP = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labelAddKey = new System.Windows.Forms.Label();
             this.buttonSaveFile = new System.Windows.Forms.Button();
             this.buttonHardReset = new System.Windows.Forms.Button();
             this.buttonSoftReset = new System.Windows.Forms.Button();
             this.buttonEncryptDec = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonToMorse = new System.Windows.Forms.Button();
+            this.buttonToText = new System.Windows.Forms.Button();
             this.buttonDecrypt = new System.Windows.Forms.Button();
             this.buttonEncryptSym = new System.Windows.Forms.Button();
             this.textBoxDecrypted = new System.Windows.Forms.TextBox();
@@ -60,7 +61,6 @@ namespace MorseRSAAlgorithms
             this.tabPageUser1 = new System.Windows.Forms.TabPage();
             this.tabPageVoid = new System.Windows.Forms.TabPage();
             this.tabPageUser2 = new System.Windows.Forms.TabPage();
-            this.labelAddKey = new System.Windows.Forms.Label();
             this.mainTab.SuspendLayout();
             this.tabPageIntro.SuspendLayout();
             this.tabControlIntroduction.SuspendLayout();
@@ -198,8 +198,8 @@ namespace MorseRSAAlgorithms
             this.tabPage2.Controls.Add(this.buttonHardReset);
             this.tabPage2.Controls.Add(this.buttonSoftReset);
             this.tabPage2.Controls.Add(this.buttonEncryptDec);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.buttonToMorse);
+            this.tabPage2.Controls.Add(this.buttonToText);
             this.tabPage2.Controls.Add(this.buttonDecrypt);
             this.tabPage2.Controls.Add(this.buttonEncryptSym);
             this.tabPage2.Controls.Add(this.textBoxDecrypted);
@@ -217,6 +217,15 @@ namespace MorseRSAAlgorithms
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Implementation of RSA and Morse Code";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // labelAddKey
+            // 
+            this.labelAddKey.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelAddKey.AutoSize = true;
+            this.labelAddKey.Location = new System.Drawing.Point(209, 20);
+            this.labelAddKey.Name = "labelAddKey";
+            this.labelAddKey.Size = new System.Drawing.Size(0, 13);
+            this.labelAddKey.TabIndex = 35;
             // 
             // buttonSaveFile
             // 
@@ -258,26 +267,29 @@ namespace MorseRSAAlgorithms
             this.buttonEncryptDec.TabIndex = 30;
             this.buttonEncryptDec.Text = "Decimal Encrypt";
             this.buttonEncryptDec.UseVisualStyleBackColor = true;
+            this.buttonEncryptDec.Click += new System.EventHandler(this.buttonEncryptDec_Click);
             // 
-            // button2
+            // buttonToMorse
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(1066, 122);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 23);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Text To Morse";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonToMorse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonToMorse.Location = new System.Drawing.Point(1066, 122);
+            this.buttonToMorse.Name = "buttonToMorse";
+            this.buttonToMorse.Size = new System.Drawing.Size(105, 23);
+            this.buttonToMorse.TabIndex = 29;
+            this.buttonToMorse.Text = "Text To Morse";
+            this.buttonToMorse.UseVisualStyleBackColor = true;
+            this.buttonToMorse.Click += new System.EventHandler(this.buttonToMorse_Click);
             // 
-            // button1
+            // buttonToText
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(1066, 363);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Morse To Text";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonToText.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonToText.Location = new System.Drawing.Point(1066, 363);
+            this.buttonToText.Name = "buttonToText";
+            this.buttonToText.Size = new System.Drawing.Size(105, 23);
+            this.buttonToText.TabIndex = 28;
+            this.buttonToText.Text = "Morse To Text";
+            this.buttonToText.UseVisualStyleBackColor = true;
+            this.buttonToText.Click += new System.EventHandler(this.buttonToText_Click);
             // 
             // buttonDecrypt
             // 
@@ -288,6 +300,7 @@ namespace MorseRSAAlgorithms
             this.buttonDecrypt.TabIndex = 27;
             this.buttonDecrypt.Text = "Decrypt Text";
             this.buttonDecrypt.UseVisualStyleBackColor = true;
+            this.buttonDecrypt.Click += new System.EventHandler(this.buttonDecrypt_Click);
             // 
             // buttonEncryptSym
             // 
@@ -298,6 +311,7 @@ namespace MorseRSAAlgorithms
             this.buttonEncryptSym.TabIndex = 26;
             this.buttonEncryptSym.Text = "Symbol Encrypt";
             this.buttonEncryptSym.UseVisualStyleBackColor = true;
+            this.buttonEncryptSym.Click += new System.EventHandler(this.buttonEncryptSym_Click);
             // 
             // textBoxDecrypted
             // 
@@ -337,6 +351,7 @@ namespace MorseRSAAlgorithms
             this.button3.TabIndex = 22;
             this.button3.Text = "Browse File";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBoxEncrypted
             // 
@@ -366,6 +381,7 @@ namespace MorseRSAAlgorithms
             this.buttonBrowse.TabIndex = 17;
             this.buttonBrowse.Text = "Browse File";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // textBoxMessage
             // 
@@ -406,15 +422,6 @@ namespace MorseRSAAlgorithms
             this.tabPageUser2.Text = "User 2";
             this.tabPageUser2.UseVisualStyleBackColor = true;
             // 
-            // labelAddKey
-            // 
-            this.labelAddKey.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelAddKey.AutoSize = true;
-            this.labelAddKey.Location = new System.Drawing.Point(209, 20);
-            this.labelAddKey.Name = "labelAddKey";
-            this.labelAddKey.Size = new System.Drawing.Size(0, 13);
-            this.labelAddKey.TabIndex = 35;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,7 +432,6 @@ namespace MorseRSAAlgorithms
             this.MinimumSize = new System.Drawing.Size(1225, 750);
             this.Name = "MainForm";
             this.Text = "Morse and RSA Algorithm TestBench";
-
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.mainTab.ResumeLayout(false);
             this.tabPageIntro.ResumeLayout(false);
@@ -434,7 +440,6 @@ namespace MorseRSAAlgorithms
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-
             this.ResumeLayout(false);
 
         }
@@ -457,8 +462,8 @@ namespace MorseRSAAlgorithms
         private System.Windows.Forms.TextBox textBoxP;
         private System.Windows.Forms.Label labelKeySelect;
         private System.Windows.Forms.Button buttonEncryptDec;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonToMorse;
+        private System.Windows.Forms.Button buttonToText;
         private System.Windows.Forms.Button buttonDecrypt;
         private System.Windows.Forms.Button buttonEncryptSym;
         private System.Windows.Forms.TextBox textBoxDecrypted;

@@ -168,5 +168,63 @@ namespace MorseRSAAlgorithms
         }
         #endregion
 
+        private void buttonEncryptDec_Click(object sender, EventArgs e)
+        {
+            foreach (char i in textBoxMessage.Text)
+            {
+                var x = RSAencrypt.exponent_algorithm(pub_keys, i);
+                encrypted_message.Add(x);
+            }
+            textBoxEncrypted.Text += encrypted_message;
+            /*
+            foreach (int j in encrypted_message)
+            {
+                textBoxEncrypted.Text += j;
+                textBoxEncrypted.Text += ' ';
+            }
+            */
+        }
+
+        private void buttonEncryptSym_Click(object sender, EventArgs e)
+        {
+            foreach (char i in textBoxMessage.Text)
+            {
+                var x = RSAencrypt.exponent_algorithm(pub_keys, i);
+                encrypted_text += chr(RSAencrypt.exponent_algorithm(pub_keys, i));
+            }
+            textBoxEncrypted.Text += encrypted_text;
+            
+        }
+
+        private void buttonDecrypt_Click(object sender, EventArgs e)
+        {
+            // tool for testing
+            // AllocConsole();
+            foreach (int i in encrypted_text)
+            {
+                decrypted_message += chr(RSAencrypt.exponent_algorithm(pri_keys, i));
+            }
+            textBoxDecrypted.Text = decrypted_message;
+        }
+
+        private void buttonBrowse_Click(object sender, EventArgs e)
+        {
+            textBoxMessage.Text = FileBrowse.fileImport();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBoxMessage.Text = FileBrowse.fileImport();
+        }
+
+        private void buttonToMorse_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonToText_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
