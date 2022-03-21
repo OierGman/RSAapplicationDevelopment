@@ -135,6 +135,7 @@ namespace MorseRSAAlgorithms
             }
         }
 
+
         #region Reset Buttons
         private void buttonSoftReset_Click(object sender, EventArgs e)
         {
@@ -166,5 +167,6 @@ namespace MorseRSAAlgorithms
             updateButton();
         }
         #endregion
+
     }
 }

@@ -425,6 +425,7 @@ namespace MorseRSAAlgorithms
             this.MinimumSize = new System.Drawing.Size(1225, 750);
             this.Name = "MainForm";
             this.Text = "Morse and RSA Algorithm TestBench";
+
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.mainTab.ResumeLayout(false);
             this.tabPageIntro.ResumeLayout(false);
@@ -433,6 +434,7 @@ namespace MorseRSAAlgorithms
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+
             this.ResumeLayout(false);
 
         }
