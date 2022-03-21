@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,7 +21,8 @@ namespace MorseRSAAlgorithms
         int q;
         Tuple<int, int> pub_keys;
         Tuple<int, int> pri_keys;
-        string encrypted_message;
+        List<int> encrypted_message = new List<int>();
+        string encrypted_text;
         string decrypted_message;
 
         // Morse Code Variables
@@ -56,8 +59,9 @@ namespace MorseRSAAlgorithms
 
         private void updateButton()
         {
-            //buttonEncrypt.Enabled = textBoxP.Text != string.Empty && textBoxQ.Text != string.Empty;
-           // buttonDecrypt.Enabled = textBoxP.Text != string.Empty && textBoxQ.Text != string.Empty;
+            buttonEncryptDec.Enabled = textBoxP.Text != string.Empty && textBoxQ.Text != string.Empty;
+            buttonEncryptSym.Enabled = textBoxP.Text != string.Empty && textBoxQ.Text != string.Empty;
+            buttonDecrypt.Enabled = textBoxP.Text != string.Empty && textBoxQ.Text != string.Empty;
         }
 
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -69,6 +73,7 @@ namespace MorseRSAAlgorithms
         public MainForm()
         {
             InitializeComponent();
+            updateButton();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -99,6 +104,9 @@ namespace MorseRSAAlgorithms
                     pub_keys = RSAencrypt.get_public_private_key(p, q)[0];
                     pri_keys = RSAencrypt.get_public_private_key(p, q)[1];
                     labelKeySelect.Text = "Your public key is: " + pub_keys + ", your private key is: " + pri_keys;
+                    labelAddKey.Text = "Your public key is: " + pub_keys + ", your private key is: " + pri_keys;
+                    updateButton();
+                    tabControlIntroduction.SelectTab(tabPage2);
                 }
                 else
                 {
@@ -109,7 +117,54 @@ namespace MorseRSAAlgorithms
             {
                 labelKeySelect.Text = "FourOFour: P and Q integers are not both in specified range";
             }
+        }
+
+        private void buttonSaveFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string name = saveFileDialog1.FileName;
+                File.WriteAllText(name, textBoxEncrypted.Text);
+            }
+        }
+
+        #region Reset Buttons
+        private void buttonSoftReset_Click(object sender, EventArgs e)
+        {
+            encrypted_message.Clear();
+            encrypted_text = "";
+            decrypted_message = "";
+            text = "";
+            morse = "";
+            textBoxMessage.ResetText();
+            textBoxEncrypted.ResetText();
+            textBoxDecrypted.ResetText();
+        }
+
+        private void buttonHardReset_Click(object sender, EventArgs e)
+        {
+            encrypted_message.Clear();
+            encrypted_text = "";
+            decrypted_message = "";
+            text = "";
+            morse = "";
+            textBoxMessage.ResetText();
+            textBoxEncrypted.ResetText();
+            textBoxDecrypted.ResetText();
+            textBoxP.ResetText();
+            textBoxQ.ResetText();
+            labelKeySelect.Text = "";
+            p = 0;
+            q = 0;
             updateButton();
         }
+        #endregion
     }
 }
