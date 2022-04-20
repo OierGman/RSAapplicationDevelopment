@@ -15,6 +15,7 @@ namespace MorseRSAAlgorithms
 {
     public partial class MainForm : Form
     {
+        #region Factual section
         #region Variables
         // RSA Variables
         int p;
@@ -235,14 +236,32 @@ namespace MorseRSAAlgorithms
         {
             textBoxDecrypted.Text = morseConverter.morseToText(richTextBoxEncrypt.Text, letters, morseLetters);
         }
+        #endregion
+
+        #region variables
+        public string message;
+        #endregion
+
+        public string commsString
+        {
+            get { return message; }
+            set { message = value; }
+        }
 
         private void buttonOpenApp_Click(object sender, EventArgs e)
         {
             mainTab.SelectTab(tabControlLogs);
             var user1 = new Form1();
-            user1.Show();
-            var user2 = new Form2();
-            user2.Show();
+            user1.ShowDialog();
+            if (user1.ShowDialog() == DialogResult.OK)
+            {
+                message = user1.comms;
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            listBoxMorse.Items.Add("User 1: " + message);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace MorseRSAAlgorithms
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.tabControlLogs = new System.Windows.Forms.TabPage();
             this.tabPageIntro = new System.Windows.Forms.TabPage();
@@ -482,6 +482,7 @@ namespace MorseRSAAlgorithms
             this.Name = "MainForm";
             this.Text = "Morse and RSA Algorithm TestBench";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControlLogs.ResumeLayout(false);
             this.tabPageIntro.ResumeLayout(false);
             this.tabControlIntroduction.ResumeLayout(false);
@@ -529,9 +530,9 @@ namespace MorseRSAAlgorithms
         private System.Windows.Forms.RichTextBox richTextBoxMain;
         private System.Windows.Forms.RichTextBox richTextBoxEncrypt;
         private System.Windows.Forms.GroupBox groupBoxRSA;
-        private System.Windows.Forms.ListBox listBoxRSA;
+        public System.Windows.Forms.ListBox listBoxRSA;
         private System.Windows.Forms.GroupBox groupBoxMorse;
-        private System.Windows.Forms.ListBox listBoxMorse;
+        public System.Windows.Forms.ListBox listBoxMorse;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }
