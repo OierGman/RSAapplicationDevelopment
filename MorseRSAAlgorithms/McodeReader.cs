@@ -10,10 +10,9 @@ namespace MorseRSAAlgorithms
     {
         public static string textToMorse(string text, char[] letters, string[]morseLetters)
         {
-            string textToChange = text;
             string newText = "";
 
-            textToChange = textToChange.ToLower();
+            string textToChange = text.ToLower();
 
             for (int i = 0; i < textToChange.Length; i++)
             {

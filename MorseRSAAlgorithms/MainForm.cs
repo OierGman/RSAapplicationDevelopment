@@ -63,7 +63,10 @@ namespace MorseRSAAlgorithms
             buttonEncryptSym.Enabled = textBoxP.Text != string.Empty && textBoxQ.Text != string.Empty;
             buttonDecrypt.Enabled = textBoxP.Text != string.Empty && textBoxQ.Text != string.Empty;
         }
-
+        private void updateButtonApp()
+        {
+            buttonOpenApp.Enabled = textBoxDecrypted.Text != string.Empty;
+        }
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
@@ -74,11 +77,7 @@ namespace MorseRSAAlgorithms
         {
             InitializeComponent();
             updateButton();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This is a test");
+            updateButtonApp();
         }
 
         private void buttonAccept_Click(object sender, EventArgs e)
@@ -131,7 +130,7 @@ namespace MorseRSAAlgorithms
             if (result == DialogResult.OK)
             {
                 string name = saveFileDialog1.FileName;
-                File.WriteAllText(name, textBoxEncrypted.Text);
+                File.WriteAllText(name, richTextBoxEncrypt.Text);
             }
         }
 
@@ -144,8 +143,8 @@ namespace MorseRSAAlgorithms
             decrypted_message = "";
             text = "";
             morse = "";
-            textBoxMessage.ResetText();
-            textBoxEncrypted.ResetText();
+            richTextBoxMain.ResetText();
+            richTextBoxEncrypt.ResetText();
             textBoxDecrypted.ResetText();
         }
 
@@ -156,8 +155,8 @@ namespace MorseRSAAlgorithms
             decrypted_message = "";
             text = "";
             morse = "";
-            textBoxMessage.ResetText();
-            textBoxEncrypted.ResetText();
+            richTextBoxMain.ResetText();
+            richTextBoxEncrypt.ResetText();
             textBoxDecrypted.ResetText();
             textBoxP.ResetText();
             textBoxQ.ResetText();
@@ -165,34 +164,40 @@ namespace MorseRSAAlgorithms
             p = 0;
             q = 0;
             updateButton();
+            tabControlIntroduction.SelectTab(tabPage1);
         }
         #endregion
 
         private void buttonEncryptDec_Click(object sender, EventArgs e)
         {
-            foreach (char i in textBoxMessage.Text)
+            richTextBoxEncrypt.ResetText();
+            encrypted_message.Clear();
+
+            foreach (char i in richTextBoxMain.Text)
             {
                 var x = RSAencrypt.exponent_algorithm(pub_keys, i);
+                encrypted_text += chr(RSAencrypt.exponent_algorithm(pub_keys, i));
                 encrypted_message.Add(x);
             }
-            textBoxEncrypted.Text += encrypted_message;
-            /*
+
             foreach (int j in encrypted_message)
             {
-                textBoxEncrypted.Text += j;
-                textBoxEncrypted.Text += ' ';
+                richTextBoxEncrypt.Text += j;
+                richTextBoxEncrypt.Text += ' ';
             }
-            */
+            
         }
 
         private void buttonEncryptSym_Click(object sender, EventArgs e)
         {
-            foreach (char i in textBoxMessage.Text)
+            richTextBoxEncrypt.ResetText();
+            encrypted_text = "";
+
+            foreach (char i in richTextBoxMain.Text)
             {
-                var x = RSAencrypt.exponent_algorithm(pub_keys, i);
                 encrypted_text += chr(RSAencrypt.exponent_algorithm(pub_keys, i));
             }
-            textBoxEncrypted.Text += encrypted_text;
+            richTextBoxEncrypt.Text += encrypted_text;
             
         }
 
@@ -200,31 +205,44 @@ namespace MorseRSAAlgorithms
         {
             // tool for testing
             // AllocConsole();
+            textBoxDecrypted.ResetText();
+            decrypted_message = "";
+
             foreach (int i in encrypted_text)
             {
                 decrypted_message += chr(RSAencrypt.exponent_algorithm(pri_keys, i));
             }
             textBoxDecrypted.Text = decrypted_message;
+            updateButtonApp();
         }
 
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
-            textBoxMessage.Text = FileBrowse.fileImport();
+            richTextBoxMain.Text = FileBrowse.fileImport();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBoxMessage.Text = FileBrowse.fileImport();
+            richTextBoxEncrypt.Text = FileBrowse.fileImport();
         }
 
         private void buttonToMorse_Click(object sender, EventArgs e)
         {
-
+            richTextBoxEncrypt.Text = morseConverter.textToMorse(richTextBoxMain.Text, letters, morseLetters);
         }
 
         private void buttonToText_Click(object sender, EventArgs e)
         {
+            textBoxDecrypted.Text = morseConverter.morseToText(richTextBoxEncrypt.Text, letters, morseLetters);
+        }
 
+        private void buttonOpenApp_Click(object sender, EventArgs e)
+        {
+            mainTab.SelectTab(tabControlLogs);
+            var user1 = new Form1();
+            user1.Show();
+            var user2 = new Form2();
+            user2.Show();
         }
     }
 }
