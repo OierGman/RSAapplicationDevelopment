@@ -59,6 +59,7 @@ namespace MorseRSAAlgorithms
             this.buttonAddFileUser1.TabIndex = 2;
             this.buttonAddFileUser1.Text = "Add File";
             this.buttonAddFileUser1.UseVisualStyleBackColor = true;
+            this.buttonAddFileUser1.Click += new System.EventHandler(this.buttonAddFileUser1_Click);
             // 
             // buttonSendUser1
             // 
@@ -83,6 +84,7 @@ namespace MorseRSAAlgorithms
             this.MinimumSize = new System.Drawing.Size(400, 800);
             this.Name = "Form1";
             this.Text = "User 1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

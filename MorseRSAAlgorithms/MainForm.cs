@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -204,8 +206,6 @@ namespace MorseRSAAlgorithms
 
         private void buttonDecrypt_Click(object sender, EventArgs e)
         {
-            // tool for testing
-            // AllocConsole();
             textBoxDecrypted.ResetText();
             decrypted_message = "";
 
@@ -238,30 +238,91 @@ namespace MorseRSAAlgorithms
         }
         #endregion
 
+        #region Messaging App
         #region variables
-        public string message;
+        string localPort = "20";
+        string localIP;
+        string remoteIp;
+        string remotePort = "21";
+        Socket sck;
+        EndPoint epLocal, epRemote;
+        byte[] buffer;     
         #endregion
 
-        public string commsString
+        private string GetLocalIP()
         {
-            get { return message; }
-            set { message = value; }
+            IPHostEntry host;
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            return "127.0.0.1";
+        }
+
+        private void MessageCallBack(IAsyncResult aResult)
+        {
+            try
+            {
+                int size = sck.EndReceiveFrom(aResult, ref epRemote);
+                if (size > 0)
+                {
+                    byte[] receivedData = new byte[2000];
+
+                    receivedData = (byte[])aResult.AsyncState;
+
+                    ASCIIEncoding eEncoding = new ASCIIEncoding();
+                    string receivedMessage = eEncoding.GetString(receivedData);
+
+                    listBoxMorse.Invoke(new Action(() => { listBoxMorse.Items.Add("User 1: " + morseConverter.textToMorse(receivedMessage, letters, morseLetters)); }));
+                    listBoxRSA.Invoke(new Action(() => { listBoxRSA.Items.Add("User 1: " + receivedMessage); }));
+                }
+                buffer = new byte[2000];
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
         }
 
         private void buttonOpenApp_Click(object sender, EventArgs e)
         {
             mainTab.SelectTab(tabControlLogs);
             var user1 = new Form1();
-            user1.ShowDialog();
-            if (user1.ShowDialog() == DialogResult.OK)
+            user1.Show();
+
+            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+            sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+
+            localIP = GetLocalIP();
+            remoteIp = GetLocalIP();
+
+            try
             {
-                message = user1.comms;
+                epLocal = new IPEndPoint(IPAddress.Parse(localIP), Convert.ToInt32(localPort));
+                sck.Bind(epLocal);
+
+                epRemote = new IPEndPoint(IPAddress.Parse(remoteIp), Convert.ToInt32(remotePort));
+                sck.Connect(epRemote);
+
+                buffer = new byte[2000];
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            listBoxMorse.Items.Add("User 1: " + message);
+            
         }
+        #endregion
     }
 }

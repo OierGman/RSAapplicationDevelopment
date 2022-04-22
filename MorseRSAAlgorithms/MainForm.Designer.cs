@@ -30,6 +30,10 @@ namespace MorseRSAAlgorithms
         public void InitializeComponent()
         {
             this.tabControlLogs = new System.Windows.Forms.TabPage();
+            this.groupBoxRSA = new System.Windows.Forms.GroupBox();
+            this.listBoxRSA = new System.Windows.Forms.ListBox();
+            this.groupBoxMorse = new System.Windows.Forms.GroupBox();
+            this.listBoxMorse = new System.Windows.Forms.ListBox();
             this.tabPageIntro = new System.Windows.Forms.TabPage();
             this.tabControlIntroduction = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -40,7 +44,11 @@ namespace MorseRSAAlgorithms
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxQ = new System.Windows.Forms.TextBox();
             this.textBoxP = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.richTextBoxEncrypt = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxMain = new System.Windows.Forms.RichTextBox();
+            this.buttonOpenApp = new System.Windows.Forms.Button();
             this.labelAddKey = new System.Windows.Forms.Label();
             this.buttonSaveFile = new System.Windows.Forms.Button();
             this.buttonHardReset = new System.Windows.Forms.Button();
@@ -57,22 +65,14 @@ namespace MorseRSAAlgorithms
             this.labelEncrypt = new System.Windows.Forms.Label();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.mainTab = new System.Windows.Forms.TabControl();
-            this.buttonOpenApp = new System.Windows.Forms.Button();
-            this.richTextBoxMain = new System.Windows.Forms.RichTextBox();
-            this.richTextBoxEncrypt = new System.Windows.Forms.RichTextBox();
-            this.groupBoxMorse = new System.Windows.Forms.GroupBox();
-            this.groupBoxRSA = new System.Windows.Forms.GroupBox();
-            this.listBoxMorse = new System.Windows.Forms.ListBox();
-            this.listBoxRSA = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControlLogs.SuspendLayout();
+            this.groupBoxRSA.SuspendLayout();
+            this.groupBoxMorse.SuspendLayout();
             this.tabPageIntro.SuspendLayout();
             this.tabControlIntroduction.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.mainTab.SuspendLayout();
-            this.groupBoxMorse.SuspendLayout();
-            this.groupBoxRSA.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlLogs
@@ -86,6 +86,44 @@ namespace MorseRSAAlgorithms
             this.tabControlLogs.TabIndex = 2;
             this.tabControlLogs.Text = "Messaging Logs";
             this.tabControlLogs.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxRSA
+            // 
+            this.groupBoxRSA.Controls.Add(this.listBoxRSA);
+            this.groupBoxRSA.Location = new System.Drawing.Point(603, 6);
+            this.groupBoxRSA.Name = "groupBoxRSA";
+            this.groupBoxRSA.Size = new System.Drawing.Size(589, 666);
+            this.groupBoxRSA.TabIndex = 1;
+            this.groupBoxRSA.TabStop = false;
+            this.groupBoxRSA.Text = "RSA Message";
+            // 
+            // listBoxRSA
+            // 
+            this.listBoxRSA.FormattingEnabled = true;
+            this.listBoxRSA.HorizontalScrollbar = true;
+            this.listBoxRSA.Location = new System.Drawing.Point(6, 19);
+            this.listBoxRSA.Name = "listBoxRSA";
+            this.listBoxRSA.Size = new System.Drawing.Size(577, 641);
+            this.listBoxRSA.TabIndex = 1;
+            // 
+            // groupBoxMorse
+            // 
+            this.groupBoxMorse.Controls.Add(this.listBoxMorse);
+            this.groupBoxMorse.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxMorse.Name = "groupBoxMorse";
+            this.groupBoxMorse.Size = new System.Drawing.Size(589, 666);
+            this.groupBoxMorse.TabIndex = 0;
+            this.groupBoxMorse.TabStop = false;
+            this.groupBoxMorse.Text = "Morse Code Message";
+            // 
+            // listBoxMorse
+            // 
+            this.listBoxMorse.FormattingEnabled = true;
+            this.listBoxMorse.HorizontalScrollbar = true;
+            this.listBoxMorse.Location = new System.Drawing.Point(6, 19);
+            this.listBoxMorse.Name = "listBoxMorse";
+            this.listBoxMorse.Size = new System.Drawing.Size(577, 641);
+            this.listBoxMorse.TabIndex = 0;
             // 
             // tabPageIntro
             // 
@@ -124,7 +162,7 @@ namespace MorseRSAAlgorithms
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1178, 653);
+            this.tabPage1.Size = new System.Drawing.Size(1178, 658);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "RSA and Morse Information";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -133,7 +171,7 @@ namespace MorseRSAAlgorithms
             // 
             this.labelKeySelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelKeySelect.AutoSize = true;
-            this.labelKeySelect.Location = new System.Drawing.Point(17, 621);
+            this.labelKeySelect.Location = new System.Drawing.Point(17, 626);
             this.labelKeySelect.Name = "labelKeySelect";
             this.labelKeySelect.Size = new System.Drawing.Size(0, 13);
             this.labelKeySelect.TabIndex = 13;
@@ -142,7 +180,7 @@ namespace MorseRSAAlgorithms
             // 
             this.labelexample.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelexample.AutoSize = true;
-            this.labelexample.Location = new System.Drawing.Point(17, 545);
+            this.labelexample.Location = new System.Drawing.Point(17, 550);
             this.labelexample.Name = "labelexample";
             this.labelexample.Size = new System.Drawing.Size(519, 13);
             this.labelexample.TabIndex = 12;
@@ -152,7 +190,7 @@ namespace MorseRSAAlgorithms
             // buttonAccept
             // 
             this.buttonAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAccept.Location = new System.Drawing.Point(431, 574);
+            this.buttonAccept.Location = new System.Drawing.Point(431, 579);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(105, 23);
             this.buttonAccept.TabIndex = 11;
@@ -164,7 +202,7 @@ namespace MorseRSAAlgorithms
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(206, 580);
+            this.label2.Location = new System.Drawing.Point(206, 585);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 7;
@@ -174,7 +212,7 @@ namespace MorseRSAAlgorithms
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 580);
+            this.label1.Location = new System.Drawing.Point(17, 585);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 6;
@@ -183,7 +221,7 @@ namespace MorseRSAAlgorithms
             // textBoxQ
             // 
             this.textBoxQ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxQ.Location = new System.Drawing.Point(260, 577);
+            this.textBoxQ.Location = new System.Drawing.Point(260, 582);
             this.textBoxQ.Name = "textBoxQ";
             this.textBoxQ.Size = new System.Drawing.Size(64, 20);
             this.textBoxQ.TabIndex = 1;
@@ -191,10 +229,20 @@ namespace MorseRSAAlgorithms
             // textBoxP
             // 
             this.textBoxP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxP.Location = new System.Drawing.Point(70, 577);
+            this.textBoxP.Location = new System.Drawing.Point(70, 582);
             this.textBoxP.Name = "textBoxP";
             this.textBoxP.Size = new System.Drawing.Size(64, 20);
             this.textBoxP.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(3, 523);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1172, 132);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "RSA Setup";
             // 
             // tabPage2
             // 
@@ -223,6 +271,35 @@ namespace MorseRSAAlgorithms
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Implementation of RSA and Morse Code";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxEncrypt
+            // 
+            this.richTextBoxEncrypt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxEncrypt.Location = new System.Drawing.Point(33, 259);
+            this.richTextBoxEncrypt.Name = "richTextBoxEncrypt";
+            this.richTextBoxEncrypt.Size = new System.Drawing.Size(1023, 159);
+            this.richTextBoxEncrypt.TabIndex = 38;
+            this.richTextBoxEncrypt.Text = "";
+            // 
+            // richTextBoxMain
+            // 
+            this.richTextBoxMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxMain.Location = new System.Drawing.Point(33, 47);
+            this.richTextBoxMain.Name = "richTextBoxMain";
+            this.richTextBoxMain.Size = new System.Drawing.Size(1023, 159);
+            this.richTextBoxMain.TabIndex = 37;
+            this.richTextBoxMain.Text = "";
+            // 
+            // buttonOpenApp
+            // 
+            this.buttonOpenApp.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonOpenApp.Location = new System.Drawing.Point(3, 630);
+            this.buttonOpenApp.Name = "buttonOpenApp";
+            this.buttonOpenApp.Size = new System.Drawing.Size(1172, 25);
+            this.buttonOpenApp.TabIndex = 36;
+            this.buttonOpenApp.Text = "Open Messaging Application";
+            this.buttonOpenApp.UseVisualStyleBackColor = true;
+            this.buttonOpenApp.Click += new System.EventHandler(this.buttonOpenApp_Click);
             // 
             // labelAddKey
             // 
@@ -396,81 +473,6 @@ namespace MorseRSAAlgorithms
             this.mainTab.Size = new System.Drawing.Size(1203, 709);
             this.mainTab.TabIndex = 0;
             // 
-            // buttonOpenApp
-            // 
-            this.buttonOpenApp.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonOpenApp.Location = new System.Drawing.Point(3, 630);
-            this.buttonOpenApp.Name = "buttonOpenApp";
-            this.buttonOpenApp.Size = new System.Drawing.Size(1172, 25);
-            this.buttonOpenApp.TabIndex = 36;
-            this.buttonOpenApp.Text = "Open Messaging Application";
-            this.buttonOpenApp.UseVisualStyleBackColor = true;
-            this.buttonOpenApp.Click += new System.EventHandler(this.buttonOpenApp_Click);
-            // 
-            // richTextBoxMain
-            // 
-            this.richTextBoxMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxMain.Location = new System.Drawing.Point(33, 47);
-            this.richTextBoxMain.Name = "richTextBoxMain";
-            this.richTextBoxMain.Size = new System.Drawing.Size(1023, 159);
-            this.richTextBoxMain.TabIndex = 37;
-            this.richTextBoxMain.Text = "";
-            // 
-            // richTextBoxEncrypt
-            // 
-            this.richTextBoxEncrypt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxEncrypt.Location = new System.Drawing.Point(33, 259);
-            this.richTextBoxEncrypt.Name = "richTextBoxEncrypt";
-            this.richTextBoxEncrypt.Size = new System.Drawing.Size(1023, 159);
-            this.richTextBoxEncrypt.TabIndex = 38;
-            this.richTextBoxEncrypt.Text = "";
-            // 
-            // groupBoxMorse
-            // 
-            this.groupBoxMorse.Controls.Add(this.listBoxMorse);
-            this.groupBoxMorse.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxMorse.Name = "groupBoxMorse";
-            this.groupBoxMorse.Size = new System.Drawing.Size(589, 666);
-            this.groupBoxMorse.TabIndex = 0;
-            this.groupBoxMorse.TabStop = false;
-            this.groupBoxMorse.Text = "Morse Code Message";
-            // 
-            // groupBoxRSA
-            // 
-            this.groupBoxRSA.Controls.Add(this.listBoxRSA);
-            this.groupBoxRSA.Location = new System.Drawing.Point(603, 6);
-            this.groupBoxRSA.Name = "groupBoxRSA";
-            this.groupBoxRSA.Size = new System.Drawing.Size(589, 666);
-            this.groupBoxRSA.TabIndex = 1;
-            this.groupBoxRSA.TabStop = false;
-            this.groupBoxRSA.Text = "RSA Message";
-            // 
-            // listBoxMorse
-            // 
-            this.listBoxMorse.FormattingEnabled = true;
-            this.listBoxMorse.Location = new System.Drawing.Point(6, 19);
-            this.listBoxMorse.Name = "listBoxMorse";
-            this.listBoxMorse.Size = new System.Drawing.Size(577, 641);
-            this.listBoxMorse.TabIndex = 0;
-            // 
-            // listBoxRSA
-            // 
-            this.listBoxRSA.FormattingEnabled = true;
-            this.listBoxRSA.Location = new System.Drawing.Point(6, 19);
-            this.listBoxRSA.Name = "listBoxRSA";
-            this.listBoxRSA.Size = new System.Drawing.Size(577, 641);
-            this.listBoxRSA.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(3, 518);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1172, 132);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "RSA Setup";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,6 +486,8 @@ namespace MorseRSAAlgorithms
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControlLogs.ResumeLayout(false);
+            this.groupBoxRSA.ResumeLayout(false);
+            this.groupBoxMorse.ResumeLayout(false);
             this.tabPageIntro.ResumeLayout(false);
             this.tabControlIntroduction.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -491,8 +495,6 @@ namespace MorseRSAAlgorithms
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.mainTab.ResumeLayout(false);
-            this.groupBoxMorse.ResumeLayout(false);
-            this.groupBoxRSA.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
