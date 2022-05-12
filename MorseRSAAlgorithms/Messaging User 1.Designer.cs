@@ -42,10 +42,12 @@ namespace MorseRSAAlgorithms
             this.listBoxUser1.Name = "listBoxUser1";
             this.listBoxUser1.Size = new System.Drawing.Size(360, 628);
             this.listBoxUser1.TabIndex = 0;
+            this.listBoxUser1.SelectedIndexChanged += new System.EventHandler(this.listBoxUser1_SelectedIndexChanged);
             // 
             // richTextBoxUser1
             // 
             this.richTextBoxUser1.Location = new System.Drawing.Point(12, 650);
+            this.richTextBoxUser1.MaxLength = 128;
             this.richTextBoxUser1.Name = "richTextBoxUser1";
             this.richTextBoxUser1.Size = new System.Drawing.Size(360, 40);
             this.richTextBoxUser1.TabIndex = 1;

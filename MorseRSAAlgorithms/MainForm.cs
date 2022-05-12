@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace MorseRSAAlgorithms
 {
@@ -246,7 +247,9 @@ namespace MorseRSAAlgorithms
         string remotePort = "21";
         Socket sck;
         EndPoint epLocal, epRemote;
-        byte[] buffer;     
+        byte[] buffer;
+        RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(1024);
+
         #endregion
 
         private string GetLocalIP()
@@ -270,17 +273,20 @@ namespace MorseRSAAlgorithms
                 int size = sck.EndReceiveFrom(aResult, ref epRemote);
                 if (size > 0)
                 {
-                    byte[] receivedData = new byte[2000];
+                    byte[] receivedData = new byte[128];
 
                     receivedData = (byte[])aResult.AsyncState;
 
                     ASCIIEncoding eEncoding = new ASCIIEncoding();
                     string receivedMessage = eEncoding.GetString(receivedData);
 
-                    listBoxMorse.Invoke(new Action(() => { listBoxMorse.Items.Add("User 1: " + morseConverter.textToMorse(receivedMessage, letters, morseLetters)); }));
+                    byte[] decryptedtext = RSAcryptoserviceprovider.Decryption(receivedData, RSA.ExportParameters(true), false);
+                    string decryptString = Encoding.Default.GetString(decryptedtext);
+                    listBoxMorse.Invoke(new Action(() => { listBoxMorse.Items.Add("User 1: " + morseConverter.textToMorse(decryptString, letters, morseLetters)); }));
                     listBoxRSA.Invoke(new Action(() => { listBoxRSA.Items.Add("User 1: " + receivedMessage); }));
+                    listBoxRSA.Invoke(new Action(() => { listBoxRSA.Items.Add("      : " + decryptString); }));
                 }
-                buffer = new byte[2000];
+                buffer = new byte[128];
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
             }
             catch (Exception exp)
@@ -293,6 +299,7 @@ namespace MorseRSAAlgorithms
         {
             mainTab.SelectTab(tabControlLogs);
             var user1 = new Form1();
+            user1.passingRSA = RSA;
             user1.Show();
 
             sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -310,7 +317,7 @@ namespace MorseRSAAlgorithms
                 epRemote = new IPEndPoint(IPAddress.Parse(remoteIp), Convert.ToInt32(remotePort));
                 sck.Connect(epRemote);
 
-                buffer = new byte[2000];
+                buffer = new byte[128];
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
             }
             catch (Exception ex)
