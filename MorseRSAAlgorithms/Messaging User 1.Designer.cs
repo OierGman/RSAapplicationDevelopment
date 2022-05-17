@@ -31,7 +31,6 @@ namespace MorseRSAAlgorithms
         {
             this.listBoxUser1 = new System.Windows.Forms.ListBox();
             this.richTextBoxUser1 = new System.Windows.Forms.RichTextBox();
-            this.buttonAddFileUser1 = new System.Windows.Forms.Button();
             this.buttonSendUser1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,21 +52,11 @@ namespace MorseRSAAlgorithms
             this.richTextBoxUser1.TabIndex = 1;
             this.richTextBoxUser1.Text = "";
             // 
-            // buttonAddFileUser1
-            // 
-            this.buttonAddFileUser1.Location = new System.Drawing.Point(12, 696);
-            this.buttonAddFileUser1.Name = "buttonAddFileUser1";
-            this.buttonAddFileUser1.Size = new System.Drawing.Size(99, 53);
-            this.buttonAddFileUser1.TabIndex = 2;
-            this.buttonAddFileUser1.Text = "Add File";
-            this.buttonAddFileUser1.UseVisualStyleBackColor = true;
-            this.buttonAddFileUser1.Click += new System.EventHandler(this.buttonAddFileUser1_Click);
-            // 
             // buttonSendUser1
             // 
-            this.buttonSendUser1.Location = new System.Drawing.Point(117, 696);
+            this.buttonSendUser1.Location = new System.Drawing.Point(12, 696);
             this.buttonSendUser1.Name = "buttonSendUser1";
-            this.buttonSendUser1.Size = new System.Drawing.Size(255, 53);
+            this.buttonSendUser1.Size = new System.Drawing.Size(360, 53);
             this.buttonSendUser1.TabIndex = 3;
             this.buttonSendUser1.Text = "Send";
             this.buttonSendUser1.UseVisualStyleBackColor = true;
@@ -79,7 +68,6 @@ namespace MorseRSAAlgorithms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 761);
             this.Controls.Add(this.buttonSendUser1);
-            this.Controls.Add(this.buttonAddFileUser1);
             this.Controls.Add(this.richTextBoxUser1);
             this.Controls.Add(this.listBoxUser1);
             this.MaximumSize = new System.Drawing.Size(400, 800);
@@ -95,7 +83,6 @@ namespace MorseRSAAlgorithms
 
         private System.Windows.Forms.ListBox listBoxUser1;
         private System.Windows.Forms.RichTextBox richTextBoxUser1;
-        private System.Windows.Forms.Button buttonAddFileUser1;
         private System.Windows.Forms.Button buttonSendUser1;
     }
 }

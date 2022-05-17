@@ -30,11 +30,9 @@ namespace MorseRSAAlgorithms
         string decrypted_message;
 
         // Morse Code Variables
-        string text;
-        string morse;
-        char[] letters = { ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+        readonly char[] letters = { ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
-        string[] morseLetters = { "/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...",
+        readonly string[] morseLetters = { "/", ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...",
                 "-", "..-", "...-", ".--", "-..-", "-.--", "--..", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "-----" };
 
 
@@ -145,8 +143,6 @@ namespace MorseRSAAlgorithms
             encrypted_message.Clear();
             encrypted_text = "";
             decrypted_message = "";
-            text = "";
-            morse = "";
             richTextBoxMain.ResetText();
             richTextBoxEncrypt.ResetText();
             textBoxDecrypted.ResetText();
@@ -157,8 +153,6 @@ namespace MorseRSAAlgorithms
             encrypted_message.Clear();
             encrypted_text = "";
             decrypted_message = "";
-            text = "";
-            morse = "";
             richTextBoxMain.ResetText();
             richTextBoxEncrypt.ResetText();
             textBoxDecrypted.ResetText();

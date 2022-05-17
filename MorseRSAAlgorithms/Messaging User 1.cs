@@ -75,10 +75,6 @@ namespace MorseRSAAlgorithms
             }
         }
 
-        private void buttonAddFileUser1_Click(object sender, EventArgs e)
-        {
-            richTextBoxUser1.Text = FileBrowse.fileImport();
-        }
 
         private void listBoxUser1_SelectedIndexChanged(object sender, EventArgs e)
         {
