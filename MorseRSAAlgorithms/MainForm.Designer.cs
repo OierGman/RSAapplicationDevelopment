@@ -29,6 +29,7 @@ namespace MorseRSAAlgorithms
         /// </summary>
         public void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControlLogs = new System.Windows.Forms.TabPage();
             this.groupBoxRSA = new System.Windows.Forms.GroupBox();
             this.listBoxRSA = new System.Windows.Forms.ListBox();
@@ -65,6 +66,11 @@ namespace MorseRSAAlgorithms
             this.labelEncrypt = new System.Windows.Forms.Label();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.mainTab = new System.Windows.Forms.TabControl();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControlLogs.SuspendLayout();
             this.groupBoxRSA.SuspendLayout();
             this.groupBoxMorse.SuspendLayout();
@@ -73,6 +79,9 @@ namespace MorseRSAAlgorithms
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.mainTab.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlLogs
@@ -151,6 +160,7 @@ namespace MorseRSAAlgorithms
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.labelKeySelect);
             this.tabPage1.Controls.Add(this.labelexample);
             this.tabPage1.Controls.Add(this.buttonAccept);
@@ -473,6 +483,63 @@ namespace MorseRSAAlgorithms
             this.mainTab.Size = new System.Drawing.Size(1203, 709);
             this.mainTab.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.pictureBox2);
+            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1172, 520);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "What is RSA";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(549, 26);
+            this.label4.TabIndex = 0;
+            this.label4.Text = resources.GetString("label4.Text");
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 73);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(584, 26);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "The Image is a visual example of how RSA implementation will handle the large num" +
+    "bers, this application does not use any \r\nbig integer libraries.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(604, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(562, 495);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(40, 118);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(520, 347);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +562,10 @@ namespace MorseRSAAlgorithms
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.mainTab.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -536,6 +607,11 @@ namespace MorseRSAAlgorithms
         private System.Windows.Forms.GroupBox groupBoxMorse;
         public System.Windows.Forms.ListBox listBoxMorse;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
